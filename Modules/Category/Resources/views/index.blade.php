@@ -17,7 +17,7 @@
                             <tr>
                                 <th>S.NO</th>
                                 <th>Category name</th>
-                                <th>Subcategory</th>
+                                <th>Parent</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -35,11 +35,18 @@
                                         </div>
                                     </div>
                                 </td>
-                                <td>{{ $category->parent}}</td>
+
                                 <td>
-                                    <div class="d-flex order-actions"> <a href="javascript:;" class=""><i
-                                                class="bx bx-cog"></i></a>
-                                        <a href="javascript:;" class="ms-4"><i class="bx bx-down-arrow-alt"></i></a>
+                                    @if($category->parent_category != null)
+                                    {{ $category->parent_category->category_name }}
+                                    @else
+                                     -
+                                     @endif
+                                </td>
+                                <td>
+                                    <div class="d-flex order-actions"> <a href="{{ route('edit.category' , $category->id)}}" class=""><i
+                                                class="bx bxs-edit"></i></a>
+                                        <a href="{{ route('delete.category' , $category->id )}}" class="ms-4"><i class="bx bxs-trash"></i></a>
                                     </div>
                                 </td>
                             </tr>

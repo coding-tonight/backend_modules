@@ -9,5 +9,18 @@ class Category extends Model
 {
     use HasFactory;
 
-    protected $fillable = [];
+    protected $fillable = [
+        'category_name',
+        'image',
+        'parent'
+    ];
+    public function children()
+    {
+        return $this->hasMany('Modules\Category\Entities\Category', 'parent')->with('children');
+    }
+
+    public function parent_category()
+    {
+        return $this->belongsTo('Modules\Category\Entities\Category','parent')->with('parent_category');
+    }
 }

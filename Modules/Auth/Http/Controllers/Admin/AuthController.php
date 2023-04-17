@@ -16,8 +16,15 @@ class AuthController extends Controller
      * @return Renderable
      */
     public function index()
-    {
-        return view('auth::index');
+    {     
+         $user = auth()->user();
+          if($user != null) {
+            return redirect(route('dashboard'));
+          }
+          else {
+            return view('auth::login');
+          }
+       
     }
 
     /**
@@ -27,15 +34,15 @@ class AuthController extends Controller
     public function login(LoginRequest $request)
     {
       if(Auth::attempt($request->only('username' , 'password'))) {
-         return redirect('/dashboard');
+         return redirect('/');
       }
-      return redirect('/')->withError('Error please Entry vaild username and password');
+      return redirect('/login')->withError('Error please Entry vaild username and password');
     }
     
     public function logout(){
       Auth::Logout();
       Session::flush();
 
-      return redirect('/');
+      return redirect('/login');
     }
 }

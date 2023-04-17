@@ -1,4 +1,4 @@
-<div class="sidebar-wrapper" data-simplebar="true">
+      <div class="sidebar-wrapper" data-simplebar="true">
             <div class="sidebar-header">
                 <div>
                     <img src="{{ asset('assets/images/logo-icon.jpg')}}" class="logo-icon" alt="logo icon">
@@ -41,7 +41,7 @@
                     <ul>
                         <li> <a href="{{ route('all.product')}}"><i class="bx bx-right-arrow-alt"></i>All Products</a>
                         </li>
-                        <li> <a href="component-avtars-chips.html"><i class="bx bx-right-arrow-alt"></i>Add Product</a>
+                        <li> <a href="{{ route('create.product') }}"><i class="bx bx-right-arrow-alt"></i>Add Product</a>
                         </li>
                     </ul>
                 </li>

@@ -12,7 +12,7 @@
                                 @if(Session::has('error'))
                                     <p class="text-danger">{{ Session::get('error') }}</p>
                                 @endif
-                                <form class="row g-3" method="post" action="{{ route('login') }}">
+                                <form class="row g-3" method="post" action="{{ route('adminlogin') }}">
                                     @csrf
                                     <div class="col-12">
                                         <label for="inputEmailAddress" class="form-label">Username</label>
