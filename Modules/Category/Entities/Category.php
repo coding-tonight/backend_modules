@@ -14,6 +14,10 @@ class Category extends Model
         'image',
         'parent'
     ];
+
+    public function getProduct() {
+        return $this->hasMany('Modules\Category\Entities\Product' , 'parent' , 'cateogries_id')->with('getProduct');
+    }
     public function children()
     {
         return $this->hasMany('Modules\Category\Entities\Category', 'parent')->with('children');

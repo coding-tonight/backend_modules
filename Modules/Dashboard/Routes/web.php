@@ -13,8 +13,7 @@ use  Modules\Dashboard\Http\Controllers\Admin\DashboardController;
 
 
 
-Route::group(['middleware' => 'auth'] , function () {
+Route::group(['middleware' => ['auth' , 'admin']] , function () {
     Route::get('/', [DashboardController::class ,'index'])->name('dashboard');
-    Route::get('/dashboard', [DashboardController::class ,'index']);
 });
 

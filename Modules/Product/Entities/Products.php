@@ -9,5 +9,14 @@ class Products extends Model
 {
     use HasFactory;
 
-    protected $fillable = [];
+    protected $guraded = [];
+
+
+    public function Getcategory() {
+        return $this->belongsTo('Modules\Product\Entities\Category::class' , 'category_id' ,'id');
+    }
+
+    public function GetDetail() {
+        return $this->hasOne('Modules\Product\Entities\ProductDetail::class' , 'id' , 'product_id');
+    }
 }

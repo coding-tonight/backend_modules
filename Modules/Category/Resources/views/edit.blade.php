@@ -22,7 +22,11 @@
                                         <select class="single-select form-control border-start-0" name="parent">
                                         <option selected></option>
                                             @foreach($categories as $category)  
-                                            <option value="{{ $category->category_name }}">{{ $category->category_name }}</option>
+                                             @if($category->parent_category != null)
+                                            <option value="{{ $category->parent_category->category_name }}">{{ $category->parent_category->category_name }}</option>
+                                             @else
+                                             <option value="">-</option>
+                                             @endif
                                             @endforeach
                                         </select>
                                     </div>

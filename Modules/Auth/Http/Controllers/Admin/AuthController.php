@@ -19,7 +19,7 @@ class AuthController extends Controller
     {     
          $user = auth()->user();
           if($user != null) {
-            return redirect(route('dashboard'));
+            return redirect()-route('dashboard');
           }
           else {
             return view('auth::login');

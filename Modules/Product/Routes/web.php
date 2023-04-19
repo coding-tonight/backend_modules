@@ -13,5 +13,6 @@
 
 Route::prefix('product')->group(function () {
   Route::get('/all' , [ProductController::class , 'index'])->name('all.product');
-  Route::get('/add' , [ProductController::class , 'create'])->name('create.product');
+  Route::get('/create' , [ProductController::class , 'create'])->name('create.product');
+  Route::post('/add' , [ProductController::class , 'perform'])->name('add.product');
 });
