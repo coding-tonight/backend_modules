@@ -186,15 +186,6 @@
 			maxfilesize: 1000000
 		});
 	</script>
-	<script>
-		$(document).ready(function () {
-			$('#image-uploadify').imageuploadify();
-		})
-	</script>
-    <script src="{{ asset('assets/plugins/fancy-file-uploader/jquery.ui.widget.js') }}"></script>
-	<script src="{{ asset('assets/plugins/fancy-file-uploader/jquery.iframe-transport.js') }}"></script>
-	<script src="{{ asset('assets/plugins/fancy-file-uploader/jquery.fancy-fileupload.js')}}"></script>
-
     <!--app JS-->
     <script src="{{ asset('assets/js/app.js')}}" defer></script>
 
