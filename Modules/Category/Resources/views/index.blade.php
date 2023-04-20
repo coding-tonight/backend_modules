@@ -46,7 +46,7 @@
                                 <td>
                                     <div class="d-flex order-actions"> <a href="{{ route('edit.category' , $category->id)}}" class=""><i
                                                 class="bx bxs-edit"></i></a>
-                                        <a href="{{ route('delete.category' , $category->id )}}" class="ms-4"><i class="bx bxs-trash"></i></a>
+                                        <a href="{{ route('delete.category' , $category->id )}}" id="delete" class="ms-4"><i class="bx bxs-trash"></i></a>
                                     </div>
                                 </td>
                             </tr>
