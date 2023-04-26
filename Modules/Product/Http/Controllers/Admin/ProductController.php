@@ -19,7 +19,7 @@ class ProductController extends Controller
     public function index()
     {   
         // $categories = Category::with('GetCategory')->orderBy('updated_at' , 'desc')->get(); 
-        $products = Products::with(['GetDetail' , 'GetCategory'])->orderBy('updated_at' , 'desc')->get();
+        $products = Products::with('GetCategory')->orderBy('updated_at' , 'desc')->get();
         return view('product::index' , compact('products'));
     }
 

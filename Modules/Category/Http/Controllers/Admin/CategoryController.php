@@ -7,6 +7,7 @@ use Modules\Category\Entities\Category;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Image;
+use Illuminate\Support\Facades\Storage;
 
 class CategoryController extends Controller
 {
@@ -29,20 +30,22 @@ class CategoryController extends Controller
 
     public function perform(REQUEST $request) 
     {
-       $request->validate([
-         'category_name' => 'required',
-         'image' => 'required|image'
-       ]);
+       if($request->file('image')){
 
-        $image = $request->file('image');
-        $gen_name = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
-        Image::make($image)->resize(300 , 300)->save('upload/category/'.$gen_name);
-        
-        $image_url = "http://127.0.0.1:8000/upload/category/".$gen_name;
-        
-        Category::insert([
+         // validate if only file has image
+
+        $request->validate([
+          'category_name' => 'required',
+          'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+        ]); 
+
+          $image = $request->file('image');
+          $imageName = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
+          Image::make($image)->save('upload/category/'.$imageName);
+
+          Category::insert([
             'category_name'=> $request->category_name,
-            'image'=> $image_url,
+            'image'=> $imageName,
             'parent'=> $request->parent
         ]);
         
@@ -50,10 +53,25 @@ class CategoryController extends Controller
             'message' => 'Category added Successfully',
             'alert-type' => 'sccuess'
         );
+       } else {
+        //  if use dosen't has image this will run 
+         $imageName = "";
+         Category::insert([
+          'category_name'=> $request->category_name,
+          'parent'=> $request->parent
+      ]);
+       
+      $notification = array(
+        'message' => 'Category added Successfully',
+        'alert-type' => 'sccuess'
+    );
+
+       }
+        
 
         return redirect()->route('all.category')->with($notification);
     }
-
+     
      public function edit($id) {
         $category = Category::findorFail($id);
         $categories = Category::latest()->get();
@@ -61,25 +79,22 @@ class CategoryController extends Controller
      }
 
      public function update(REQUEST $request) {
-       $request->validate([
-        'category_name' => 'required',
-        'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
-       ] , 
-       [
-         'Category_name.required' => 'Please Enter Category name'  ,
-         'image.required' => 'please Entry Image',
-       ]);
-        
-        $image = $request->file('image');
-        $gen_name = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
-        Image::make($image)->resize(300 , 300)->save('upload/category/'.$gen_name);
+        if($request->file('image')) {
 
-        $image_url = "http://127.0.0.1:8000/upload/category/".$gen_name;
+          $request->validate([
+            'category_name' => 'required',
+            'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+           ] , 
+           [
+             'Category_name.required' => 'Please Enter Category name'  ,
+           ]);
+          $image = $request->file('image');
+          $imageName = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
+          Image::make($image)->save('upload/category/'.$imageName);
 
-        if($image) {
           Category::findorFail($request->id)->update([
             'category_name' => $request->category_name, 
-            'image' => $image_url,
+            'image' => $imageName,
             'parent' => $request->parent
           ]);
         }

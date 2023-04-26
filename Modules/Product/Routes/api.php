@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
+use Modules\Product\Http\Controllers\Api\ApiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +15,11 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/product', function (Request $request) {
-    return $request->user();
-});
+// Route::middleware('auth:api')->get('/product', function (Request $request) {
+//     return $request->user();
+// });
+/* Products api */
+Route::get('/productDetailApi/{id}' , [ApiController::class , 'ProductDetailApi']);
+Route::get('/productApi/{section}' , [ApiController::class , 'ProductApi']);
+Route::get('/search/{query}' ,[ApiController::class , 'search']);
+/* Products api */

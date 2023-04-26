@@ -4,5 +4,8 @@
     "Category": true,
     "Product": true,
     "Api": true,
-    "ProductOrder": true
+    "ProductOrder": true,
+    "Carousel": true,
+    "Role": true,
+    "Cart": true
 }

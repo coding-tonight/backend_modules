@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
+use Modules\Category\Http\Controllers\Api\ApiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +15,8 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/category', function (Request $request) {
-    return $request->user();
-});
+// Route::middleware('auth:api')->get('/category', function (Request $request) {
+//     return $request->user();
+// });
+
+Route::get('/category' , [ApiController::class , 'CategoryApi']);

@@ -4,6 +4,7 @@
 
 <div class="page-wrapper">
     <div class="page-content">
+        
         <div class="card radius-10">
             <div class="card-body">
                 <div class="d-flex align-items-center">
@@ -28,7 +29,7 @@
                                 <td>
                                     <div class="d-flex align-items-center">
                                         <div class="recent-product-img">
-                                            <img src="{{ $category->image}}" alt="">
+                                            <img src="/upload/category/{{$category->image}}" alt="">
                                         </div>
                                         <div class="ms-2">
                                             <h6 class="mb-1 font-14">{{ $category->category_name }}</h6>

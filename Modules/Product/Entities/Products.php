@@ -9,6 +9,9 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Products extends Model
 {
     use HasFactory;
+
+    protected $table = 'products';
+    
     protected $fillable = [
      'product_name'
     ];
@@ -20,6 +23,6 @@ class Products extends Model
     }
 
     public function GetDetail() {
-        return $this->hasOne('Modules\Product\Entities\ProductDetail' , 'id' , 'product_id');
+        return $this->hasOne('Modules\Product\Entities\ProductDetail' , 'product_id' , 'id');
     }
 }

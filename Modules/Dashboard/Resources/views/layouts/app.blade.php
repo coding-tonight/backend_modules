@@ -178,14 +178,7 @@
         });
 
     </script>
-    <script>
-		$('#fancy-file-upload').FancyFileUpload({
-			params: {
-				action: 'fileuploader'
-			},
-			maxfilesize: 1000000
-		});
-	</script>
+  
     <!--app JS-->
     <script src="{{ asset('assets/js/app.js')}}" defer></script>
 

@@ -19,10 +19,10 @@ return new class extends Migration
             $table->integer('product_code');
             $table->unsignedBigInteger('category_id');
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
-            $table->integer('wholesale_price');
-            $table->integer('retail_price');
-            $table->integer('market_price');
-            $table->string('qty');
+            $table->decimal('wholesale_price' ,9,3)->nullable();
+            $table->decimal('retail_price' ,9,3)->nullable();
+            $table->decimal('market_price' , 9,3)->nullable();
+            $table->string('qty')->nullable();
             $table->string('image')->nullable();
             $table->string('section');
             $table->timestamps();

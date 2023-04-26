@@ -24,7 +24,7 @@
                          @foreach($products as $product)
                             <tr>
                                 <td>{{ $product->product_code}}</td>
-                                <td><img src="" alt=""></td>
+                                <td><img src="/upload/product/{{ $product->image }}" alt="" width="100" height="100"></td>
                                 <td>{{ $product->product_name }}</td>
                                 <td>{{ $product->qty }}</td>
                                 <td>{{ $product->wholesale_price }}</td>
