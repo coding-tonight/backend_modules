@@ -11,26 +11,31 @@
     <link href="{{ asset('assets/plugins/simplebar/css/simplebar.css') }}" rel="stylesheet" />
     <link href="{{ asset('assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css') }}"
         rel="stylesheet" />
-        <link href="{{ asset('backend/assets/plugins/vectormap/jquery-jvectormap-2.0.2.css')}}" rel="stylesheet"/>
-	<link href="{{ asset('assets/plugins/simplebar/css/simplebar.css')}}" rel="stylesheet" />
-	<link href="{{ asset('assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css')}}" rel="stylesheet" />
-	<link href="{{ asset('assets/plugins/metismenu/css/metisMenu.min.css')}}" rel="stylesheet" />
-	<link href="{{ asset('assets/plugins/input-tags/css/tagsinput.css')}}" rel="stylesheet" />
+    <link href="{{ asset('backend/assets/plugins/vectormap/jquery-jvectormap-2.0.2.css') }}"
+        rel="stylesheet" />
+    <link href="{{ asset('assets/plugins/simplebar/css/simplebar.css') }}" rel="stylesheet" />
+    <link href="{{ asset('assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css') }}"
+        rel="stylesheet" />
+    <link href="{{ asset('assets/plugins/metismenu/css/metisMenu.min.css') }}"
+        rel="stylesheet" />
+    <link href="{{ asset('assets/plugins/input-tags/css/tagsinput.css') }}"
+        rel="stylesheet" />
     <!-- loader-->
     <link href="{{ asset('assets/css/pace.min.css') }}" rel="stylesheet" />
-    <link href="{{ asset('assets/plugins/datatable/css/dataTables.bootstrap5.min.css')}}" rel="stylesheet" />
+    <link href="{{ asset('assets/plugins/datatable/css/dataTables.bootstrap5.min.css') }}"
+        rel="stylesheet" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <script src="{{ asset('assets/js/pace.min.js') }}"></script>
     <!-- Bootstrap CSS -->
     <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/css/app.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets/css/icons.css') }}" rel="stylesheet">    
+    <link href="{{ asset('assets/css/icons.css') }}" rel="stylesheet">
     <!-- Theme Style CSS -->
     <link rel="stylesheet" href="{{ asset('assets/css/dark-theme.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/css/semi-dark.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/css/header-colors.css') }}" />
     <!-- Toast js -->
-   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.css">
     <title>NBU</title>
 </head>
 
@@ -38,13 +43,13 @@
     <!--wrapper-->
     <div class="wrapper">
         <!--sidebar wrapper -->
-            @include('dashboard::layouts.sidebar')
+        @include('dashboard::layouts.sidebar')
         <!--end sidebar wrapper -->
         <!--start header -->
-            @include('dashboard::layouts.header')
+        @include('dashboard::layouts.header')
         <!--end header -->
         <!--start page wrapper -->
-           @yield('content')
+        @yield('content')
         <!--end page wrapper -->
         <!--start overlay-->
         <div class="overlay toggle-icon"></div>
@@ -52,7 +57,7 @@
         <!--Start Back To Top Button--> <a href="javaScript:;" class="back-to-top"><i
                 class='bx bxs-up-arrow-alt'></i></a>
         <!--End Back To Top Button-->
-         @include('dashboard::layouts.footer')
+        @include('dashboard::layouts.footer')
     </div>
     <!--end wrapper-->
     <!--start switcher-->
@@ -178,110 +183,131 @@
         });
 
     </script>
-  
-    <!--app JS-->
-    <script src="{{ asset('assets/js/app.js')}}" defer></script>
 
-    <script src="{{ asset('assets/plugins/datatable/js/jquery.dataTables.min.js')}}"></script>
-	<script src="{{ asset('assets/plugins/datatable/js/dataTables.bootstrap5.min.js') }}"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js" integrity="sha384-zYPOMqeu1DAVkHiLqWBUTcbYfZ8osu1Nd6Z89ify25QV9guujx43ITvfi12/QExE" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.min.js" integrity="sha384-Y4oOpwW3duJdCWv5ly8SCFYWqFDsfob/3GkgExXKV4idmbt98QcxXYs9UoXAB7BZ" crossorigin="anonymous"></script>
-	<script>
-		$(document).ready(function() {
-			$('#example').DataTable();
-		  } );
-	</script>
-	<script>
-		$(document).ready(function() {
-			var table = $('#example2').DataTable( {
-				lengthChange: false,
-				buttons: [ 'copy', 'excel', 'pdf', 'print']
-			} );
-		 
-			table.buttons().container()
-				.appendTo( '#example2_wrapper .col-md-6:eq(0)' );
-		} );
+    <!--app JS-->
+    <script src="{{ asset('assets/js/app.js') }}" defer></script>
+
+    <script src="{{ asset('assets/plugins/datatable/js/jquery.dataTables.min.js') }}">
+    </script>
+    <script src="{{ asset('assets/plugins/datatable/js/dataTables.bootstrap5.min.js') }}">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js"
+        integrity="sha384-zYPOMqeu1DAVkHiLqWBUTcbYfZ8osu1Nd6Z89ify25QV9guujx43ITvfi12/QExE" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.min.js"
+        integrity="sha384-Y4oOpwW3duJdCWv5ly8SCFYWqFDsfob/3GkgExXKV4idmbt98QcxXYs9UoXAB7BZ" crossorigin="anonymous">
     </script>
     <script>
-	@if(Session::has('message'))
-    var type = "{{ Session::get('alert-type', 'info') }}";
-    switch(type){
-        case 'info':
-            toastr.info("{{ Session::get('message') }}");
-            break;
+        $(document).ready(function () {
+            $('#example').DataTable();
+        });
 
-        case 'warning':
-            toastr.warning("{{ Session::get('message') }}");
-            break;
+    </script>
+    <script>
+        $(document).ready(function () {
+            var table = $('#example2').DataTable({
+                lengthChange: false,
+                buttons: ['copy', 'excel', 'pdf', 'print']
+            });
 
-        case 'success':
-            toastr.success("{{ Session::get('message') }}");
-            break;
+            table.buttons().container()
+                .appendTo('#example2_wrapper .col-md-6:eq(0)');
+        });
 
-        case 'error':
-            toastr.error("{{ Session::get('message') }}");
-            break;
-    }
-  @endif
-	</script>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-	<script type="text/javascript">
-		$(function(){
-			$(document).on('click', '#delete' ,function(e){
-				e.preventDefault();
-				let link = $(this).attr('href');
+    </script>
+    <script>
+        < blade
+        if |(Session % 3 A % 3 Ahas( % 26 % 2339 % 3 Bmessage % 26 % 2339 % 3 B)) >
+        var type = "{{ Session::get('alert-type', 'info') }}";
+        switch (type) {
+            case 'info':
+                toastr.info("{{ Session::get('message') }}");
+                break;
 
-				Swal.fire({
-		title: 'Are you sure?',
-		text: "You won't be able to revert this!",
-		icon: 'warning',
-		showCancelButton: true,
-		confirmButtonColor: '#3085d6',
-		cancelButtonColor: '#d33',
-		confirmButtonText: 'Yes, delete it!'
-		}).then((result) => {
-		if (result.isConfirmed) {
-			window.location.href = link
-			Swal.fire(
-			'Deleted!',
-			'Your file has been deleted.',
-			'success'
-			)
-		}
-		})
-			})
-		})
+            case 'warning':
+                toastr.warning("{{ Session::get('message') }}");
+                break;
 
-		$(function(){
-			$(document).on('click', '#deleteProduct' ,function(e){
-				e.preventDefault();
-				let Productlink = $(this).attr('href');
+            case 'success':
+                toastr.success("{{ Session::get('message') }}");
+                break;
 
-				Swal.fire({
-		title: 'Are you sure?',
-		text: "You won't be able to revert this!",
-		icon: 'warning',
-		showCancelButton: true,
-		confirmButtonColor: '#3085d6',
-		cancelButtonColor: '#d33',
-		confirmButtonText: 'Yes, delete it!'
-		}).then((result) => {
-		if (result.isConfirmed) {
-			window.location.href = Productlink
-			Swal.fire(
-			'Deleted!',
-			'Your  Product has been deleted.',
-			'success'
-			)
-		}
-		})
-			})
-		})
-		
-	</script>
+            case 'error':
+                toastr.error("{{ Session::get('message') }}");
+                break;
+        } <
+        /blade endif>
 
-<script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script type="text/javascript">
+        $(function () {
+            $(document).on('click', '#delete', function (e) {
+                e.preventDefault();
+                let link = $(this).attr('href');
 
+                Swal.fire({
+                    title: 'Are you sure?',
+                    text: "You won't be able to revert this!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, delete it!'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.href = link
+                        Swal.fire(
+                            'Deleted!',
+                            'Your file has been deleted.',
+                            'success'
+                        )
+                    }
+                })
+            })
+        })
+
+        $(function () {
+            $(document).on('click', '#deleteProduct', function (e) {
+                e.preventDefault();
+                let Productlink = $(this).attr('href');
+
+                Swal.fire({
+                    title: 'Are you sure?',
+                    text: "You won't be able to revert this!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, delete it!'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.href = Productlink
+                        Swal.fire(
+                            'Deleted!',
+                            'Your  Product has been deleted.',
+                            'success'
+                        )
+                    }
+                })
+            })
+        })
+
+    </script>
+
+
+    <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+    <script>
+        tinymce.init({
+            selector: "textarea",
+            plugins: [
+                "insertdatetime" ,"table"
+            ],
+            width: 700,
+            height: 400,
+        })
+
+    </script>
 </body>
 
 </html>

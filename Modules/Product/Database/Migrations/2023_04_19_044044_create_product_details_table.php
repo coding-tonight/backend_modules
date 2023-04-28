@@ -24,12 +24,12 @@ return new class extends Migration
             $table->string('length')->nullable();
             // end Dimension
             // images for product detail
-            $table->string('image_one');
-            $table->string('image_two');
-            $table->string('image_three');
+            $table->string('image_one')->nullable();
+            $table->string('image_two')->nullable();
+            $table->string('image_three')->nullable();
             // end images
             $table->text('description');
-            $table->text('extra_field')->nullable();
+            $table->text('extra_field')->nullable(); // Buckle
             $table->text('extra_field_1')->nullable();
             $table->text('extra_field_2')->nullable();
             $table->string('farbic')->nullable();
@@ -37,7 +37,7 @@ return new class extends Migration
             $table->string('running')->nullable();
             $table->string('thread')->nullable();
             $table->string('tape')->nullable();
-            $table->string('tofada')->nullable();
+            $table->string('tofada')->nullable(); // tofada as interFebric
             $table->timestamps();
         });
     }

@@ -4,11 +4,12 @@
 
 <div class="page-wrapper">
     <div class="page-content">
-        
         <div class="card radius-10">
             <div class="card-body">
                 <div class="d-flex align-items-center">
-                    <div class="font-22 ms-auto"><i class="bx bx-dots-horizontal-rounded"></i>
+                    <div class="font-22 ms-auto">
+                         <a href="{{ route('create.category') }}"><i class="bx bx-plus"></i>
+                      Add Category</a>
                     </div>
                 </div>
                 <hr>
@@ -23,9 +24,10 @@
                             </tr>
                         </thead>
                         <tbody>
+                          <?php $i=1 ?>
                           @foreach( $categories as $category)
                             <tr>
-                                <td>{{ $category->id}}</td>
+                                <td>{{ $i ++ }}</td>
                                 <td>
                                     <div class="d-flex align-items-center">
                                         <div class="recent-product-img">

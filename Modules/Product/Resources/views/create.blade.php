@@ -34,35 +34,37 @@
                                 </div>
                                 <div class="mb-3">
                                     <img src="{{ asset('no_image.jpg') }}" height="200"
-                                        class="thumbnail img-thumbnail" alt="Thumbnail">
+                                        class="thumbnail img-thumbnail thumbnail-img" alt="Thumbnail">
                                 </div>
                                 <!-- product details -->
                                 <div class="mb-3">
-                                    <label for="inputProductDescription" class="form-label img1">Product Images</label>
-                                    <input id="image-uploadify" type="file"
+                                    <label for="inputProductDescription" class="form-label">Product Images</label>
+                                    <input id="image-uploadify" class="img1" type="file"
                                         accept=".xlsx,.xls,image/*,.doc,audio/*,.docx,video/*,.ppt,.pptx,.txt,.pdf"
                                         onchange="previewFile1()" multiple name="image_one">
                                 </div>
+
                                 <div class="mb-3">
-                                    <label for="inputProductDescription" class="form-label img2">Product Images</label>
-                                    <input id="image-uploadify" type="file"
+                                    <label for="inputProductDescription" class="form-label">Product Images</label>
+                                    <input id="image-uploadify" class="img2" type="file"
                                         accept=".xlsx,.xls,image/*,.doc,audio/*,.docx,video/*,.ppt,.pptx,.txt,.pdf"
                                         onchange="previewFile2()" multiple name="image_two">
                                 </div>
+
                                 <div class="mb-3">
-                                    <label for="inputProductDescription" class="form-label img3">Product Images</label>
-                                    <input id="image-uploadify" type="file"
+                                    <label for="inputProductDescription" class="form-label">Product Images</label>
+                                    <input id="image-uploadify" type="file" class="img3"
                                         accept=".xlsx,.xls,image/*,.doc,audio/*,.docx,video/*,.ppt,.pptx,.txt,.pdf"
                                         onchange="previewFile3()" multiple name="image_three">
                                 </div>
                                 <!-- product details -->
                                 <div class="mb-3">
                                     <img src="{{ asset('no_image.jpg') }}" height="200"
-                                        class="thumbnail1 img-thumbnail" alt="Thumbnail">
+                                        class="thumbnail1 img-thumbnail thumbnail-img" alt="Thumbnail1">
+                                    <img src="{{ asset('no_image.jpg') }}"
+                                        class="thumbnail2 img-thumbnail thumbnail-img" alt="">
                                     <img src="{{ asset('no_image.jpg') }}" height="200"
-                                        class="thumbnail2 img-thumbnail" alt="Thumbnail">
-                                    <img src="{{ asset('no_image.jpg') }}" height="200"
-                                        class="thumbnail3 img-thumbnail" alt="Thumbnail">
+                                        class="thumbnail3 img-thumbnail thumbnail-img" alt="Thumbnail3">
                                 </div>
                                 <div class="mb-3">
                                     <label for="inputProductDescription" class="form-label">Description</label>
@@ -71,23 +73,41 @@
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>
-                                <div class="mb-3">
-                                    <label for="inputProductDescription" class="form-label">Extra Field</label>
-                                    <textarea id="myeditorinstance" name="extra_field"></textarea>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="inputProductDescription" class="form-label">Extra Field</label>
-                                    <textarea id="myeditorinstance" name="extra_field_1"></textarea>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="inputProductDescription" class="form-label">Extra Field</label>
-                                    <textarea id="myeditorinstance" name="extra_field_2"></textarea>
-                                </div>
                             </div>
                         </div>
                         <div class="col-lg-4">
                             <div class="border border-3 p-4 rounded">
                                 <div class="row g-3">
+                                    <div class="col-12">
+                                        <label for="inputProductType" class="form-label">Category</label>
+                                        <select class="form-select" id="inputProductType" name="category_id">
+                                            <option>Please select Category</option>
+                                            @foreach($categories as $category)
+                                                @if(count($categories) > 0)
+                                                    <option value="{{ $category->id }}">
+                                                        {{ $category->category_name }}</option>
+                                                @else
+                                                    <option value="">-</option>
+                                                @endif
+                                            @endforeach
+                                        </select>
+                                        @error('category_id')
+                                            <span class="text-danger">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+
+                                    <div class="col-12">
+                                        <label for="inputCollection" class="form-label">Section</label>
+                                        <select class="form-select" id="inputCollection" name="section">
+                                            <option></option>
+                                            <option value="Feature">Feature</option>
+                                            <option value="New">New</option>
+                                            <option value="Collection">Collection</option>
+                                        </select>
+                                        @error('section')
+                                            <span class="text-danger">{{ $message }}</span>
+                                        @enderror
+                                    </div>
                                     <div class="col-md-6">
                                         <label for="inputPrice" class="form-label">Wholesale Price</label>
                                         <input type="text" class="form-control" id="inputPrice" placeholder="00.00"
@@ -126,7 +146,7 @@
                                             name="height">
                                     </div>
                                     <div class="col-md-6">
-                                        <label for="inputStarPoints" class="form-label">width</label>
+                                        <label for="inputStarPoints" class="form-label">breadth</label>
                                         <input type="text" class="form-control" id="inputStarPoints" placeholder="00.00"
                                             name="width">
                                     </div>
@@ -135,13 +155,13 @@
                                         <input type="text" class="form-control" id="inputStarPoints" placeholder="00.00"
                                             name="color">
                                         @error('color')
-                                         <span class="text-danger">{{ $message }}</span>
+                                            <span class="text-danger">{{ $message }}</span>
                                         @enderror
                                     </div>
                                     <div class="col-md-6">
                                         <label for="inputStarPoints" class="form-label">Length</label>
-                                        <input type="text" class="form-control" id="inputStarPoints"
-                                            placeholder="00.00" name="length">
+                                        <input type="text" class="form-control" id="inputStarPoints" placeholder="00.00"
+                                            name="length">
                                     </div>
                                     <div class="col-md-6">
                                         <label for="inputStarPoints" class="form-label">Thread</label>
@@ -149,7 +169,7 @@
                                             name="thread">
                                     </div>
                                     <div class="col-md-6">
-                                        <label for="inputStarPoints" class="form-label">farbic/cloths</label>
+                                        <label for="inputStarPoints" class="form-label">farbic</label>
                                         <input type="text" class="form-control" id="inputStarPoints" placeholder="00.00"
                                             name="farbic">
                                     </div>
@@ -162,39 +182,29 @@
                                         <input type="text" class="form-control" id="inputStarPoints" name="tape">
                                     </div>
                                     <div class="col-12">
-                                        <label for="inputProductType" class="form-label">Category</label>
-                                        <select class="form-select" id="inputProductType" name="category_id">
-                                            <option>Please select Category</option>
-                                            @foreach($categories as $category)
-                                                @if(count($categories) > 0)
-                                                    <option value="{{ $category->id }}">
-                                                        {{ $category->category_name }}</option>
-                                                @else
-                                                    <option value="">-</option>
-                                                @endif
-                                            @endforeach
-                                        </select>
-                                        @error('category_id')
-                                        <span class="text-danger">{{ $message }}</span>
-                                        @enderror
-                                    </div>
-
-                                    <div class="col-12">
-                                        <label for="inputCollection" class="form-label">Section</label>
-                                        <select class="form-select" id="inputCollection" name="section">
-                                            <option></option>
-                                            <option value="Feature">Feature</option>
-                                            <option value="New">New</option>
-                                            <option value="Collection">Collection</option>
-                                        </select>
-                                         @error('section')
-                                        <span class="text-danger">{{ $message }}</span>
-                                        @enderror
-                                    </div>
-                                    <div class="col-12">
-                                        <label for="inputProductTags" class="form-label">Material / Tofada</label>
+                                        <label for="inputProductTags" class="form-label">foam</label>
                                         <input type="text" class="form-control" id="inputProductTags"
-                                            placeholder="Enter Product Tags" name="tofada">
+                                            placeholder="Enter Inter Febric" name="extra_field_1">
+                                    </div>
+                                    <div class="col-12">
+                                        <label for="inputProductTags" class="form-label">fiber</label>
+                                        <input type="text" class="form-control" id="inputProductTags"
+                                            placeholder="Enter Inter Febric" name="extra_field_2">
+                                    </div>
+                                    <div class="col-12">
+                                        <label for="inputProductTags" class="form-label">Inter Febric</label>
+                                        <input type="text" class="form-control" id="inputProductTags"
+                                            placeholder="Enter Inter Febric" name="tofada">
+                                    </div>
+                                    <div class="col-12">
+                                        <label for="inputProductTags" class="form-label">Runner</label>
+                                        <input type="text" class="form-control" id="inputProductTags"
+                                            placeholder="Enter Runner" name="running">
+                                    </div>
+                                    <div class="col-12">
+                                        <label for="inputProductTags" class="form-label">Buckle</label>
+                                        <input type="text" class="form-control" id="inputProductTags"
+                                            placeholder="Enter Buckle" name="extra_field">
                                     </div>
                                     <div class="col-12">
                                         <div class="d-grid">
@@ -215,9 +225,9 @@
 <!--  script for thumbnail -->
 <script>
     function previewFile() {
-        var preview = document.querySelector('.thumbnail');
-        var file = document.querySelector('input[type=file]').files[0];
-        var reader = new FileReader();
+        let preview = document.querySelector('.thumbnail');
+        let file = document.querySelector('input[type=file]').files[0];
+        let reader = new FileReader();
 
         reader.onloadend = function () {
             preview.src = reader.result;
@@ -231,9 +241,9 @@
     }
 
     function previewFile1() {
-        var preview = document.querySelector('.thumbnail1');
-        var file = document.querySelector('.img1').files[0];
-        var reader = new FileReader();
+        let preview = document.querySelector('.thumbnail1');
+        let file = document.querySelector('.img1').files[0];
+        let reader = new FileReader();
 
         reader.onloadend = function () {
             preview.src = reader.result;
@@ -247,9 +257,9 @@
     }
 
     function previewFile2() {
-        var preview = document.querySelector('.thumbnail2');
-        var file = document.querySelector('.img2]').files[0];
-        var reader = new FileReader();
+        let preview = document.querySelector('.thumbnail2');
+        let file = document.querySelector('.img2').files[0];
+        let reader = new FileReader();
 
         reader.onloadend = function () {
             preview.src = reader.result;
@@ -263,9 +273,9 @@
     }
 
     function previewFile3() {
-        var preview = document.querySelector('.thumbnail3');
-        var file = document.querySelector('.img3').files[0];
-        var reader = new FileReader();
+        let preview = document.querySelector('.thumbnail3');
+        let file = document.querySelector('.img3').files[0];
+        let reader = new FileReader();
 
         reader.onloadend = function () {
             preview.src = reader.result;
@@ -278,14 +288,13 @@
         }
     }
 
-
 </script>
 
 
 <!-- end -->
 
 <style lang="scss">
-    .thumbnail {
+    .thumbnail-img {
         width: 300px;
         height: 300px;
     }

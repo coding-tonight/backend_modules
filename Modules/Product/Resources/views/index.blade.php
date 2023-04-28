@@ -5,17 +5,26 @@
     <div class="page-content">
         <div class="card">
             <div class="card-body">
+                <div class="d-flex align-items-center">
+                    <div class="font-22 ms-auto">
+                         <a href="{{ route('create.product') }}"><i class="bx bx-plus"></i>
+                      Add Product</a>
+                    </div>
+                </div>
+                <hr>
                 <div class="table-responsive">
+                    
                     <table id="example2" class="table table-striped table-bordered">
                         <thead>
                             <tr>
-                                <th>S.NO</th>
+                                <th>Item code</th>
                                 <th>Image</th>
                                 <th>Product Name</th>
                                 <th>Qty</th>
                                 <th>wholesale Price</th>
                                 <th>Retail Price</th>
                                 <th>Market Price</th>
+                                <th>Description</th>
                                 <th>Category</th>
                                  <th>Action</th>
                             </tr>
@@ -25,11 +34,48 @@
                             <tr>
                                 <td>{{ $product->product_code}}</td>
                                 <td><img src="/upload/product/{{ $product->image }}" alt="" width="100" height="100"></td>
-                                <td>{{ $product->product_name }}</td>
-                                <td>{{ $product->qty }}</td>
-                                <td>{{ $product->wholesale_price }}</td>
-                                <td>{{ $product->retail_price }}</td>
-                                <td>{{ $product->market_price }}</td>
+                                <td>
+                                    @if($product->product_name != null)
+                                    {{ $product->product_name }}
+                                      @else
+                                       - 
+                                     @endif
+                                </td>
+                                <td>
+                                   @if($product->qty != null)
+                                    {{ $product->qty }}
+                                   @else 
+                                    - 
+                                  @endif
+                                </td>
+                                <td>
+                                  @if($product->wholesale_price != null)
+                                    {{ $product->wholesale_price }}
+                                  @else 
+                                   -
+                                   @endif
+                                </td>
+                                <td>
+                                  @if($product->retial_price != null)
+                                    {{ $product->retail_price }}
+                                  @else 
+                                   - 
+                                   @endif
+                                </td>
+                                <td>
+                                   @if($product->market_price != null)
+                                    {{ $product->market_price }}
+                                   @else 
+                                    -
+                                    @endif
+                                </td>
+                                <td>
+                                   @if($product->market_price != null)
+                                    {{ $product->market_price }}
+                                   @else 
+                                    -
+                                    @endif
+                                </td>
                                 <td>{{ $product->Getcategory->category_name }}</td>
                                 <td>
                                 <div class="d-flex order-actions"> <a href="{{ route('edit.product' , $product->id) }}" class=""><i
