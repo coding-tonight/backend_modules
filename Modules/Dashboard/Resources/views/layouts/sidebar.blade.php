@@ -58,6 +58,33 @@
                         </li>
                     </ul>
                 </li>
+                <li>
+                    <a class="has-arrow" href="javascript:;">
+                        <div class="parent-icon"><i class="bx bx-repeat"></i>
+                        </div>
+                        <div class="menu-title">Role and permission</div>
+                    </a>
+                    <ul>
+                        <li> <a href="{{ route('all.contact') }}"><i class="bx bx-right-arrow-alt"></i>All Role</a>
+                        </li>
+                        <li> <a href="{{ route('create.carousel') }}"><i class="bx bx-right-arrow-alt"></i>Add Carousel</a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a class="has-arrow" href="javascript:;">
+                        <div class="parent-icon"><i class="bx bx-repeat"></i>
+                        </div>
+                        <div class="menu-title">Contact</div>
+                    </a>
+                    <ul>
+                        <li> <a href="{{ route('all.contact') }}"><i class="bx bx-right-arrow-alt"></i>All Role</a>
+                        </li>
+                        <li> <a href="{{ route('create.carousel') }}"><i class="bx bx-right-arrow-alt"></i>Add Carousel</a>
+                        </li>
+                    </ul>
+                </li>
            
             <!--end navigation-->
         </div>

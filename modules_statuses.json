@@ -7,5 +7,6 @@
     "ProductOrder": true,
     "Carousel": true,
     "Role": true,
-    "Cart": true
+    "Cart": true,
+    "Contact": true
 }
