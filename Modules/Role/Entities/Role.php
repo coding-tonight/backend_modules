@@ -10,4 +10,12 @@ class Role extends Model
     use HasFactory;
 
     protected $fillable = [];
+
+    public function User(){
+        return $this->belongsTo('App/Models/User' , 'id' , 'user_id');
+    }
+
+    public function permissions(){
+        return $this->hasMany('App/Models/Permission' ,)
+    }
 }
