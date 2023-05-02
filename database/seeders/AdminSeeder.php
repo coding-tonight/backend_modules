@@ -15,10 +15,20 @@ class AdminSeeder extends Seeder
      */
     public function run(): void
     {
-       DB::table('users')->insert([
-        'username' => 'Administrator',
-        'password'=> Hash::make('admin@123@'),
-        'is_admin'=> '1'
-       ]);
+       $users = array(
+        array(
+          'username' => 'Administrator', 
+          'password' => Hash::make('admin@123@') , 
+           'is_admin' => '1' 
+        ),
+        array(
+            'username' => 'User', 
+            'password' => Hash::make('user@123@') , 
+             'is_admin' => '0' 
+        )
+        );
+
+  
+       DB::table('users')->insert($users);
     }
 }
