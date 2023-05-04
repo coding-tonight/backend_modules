@@ -20,12 +20,13 @@ class ApiController extends Controller
     {
         if(Auth::attempt($request->only('username' , 'password'))) {
             $user = Auth::user();
-            $token = $user->createToken('app')->accessToken;
+            $token = $user->createToken('Access Token')->accessToken;
 
-            return response([
-                'message' => 'Login succesfully',
-                 'token' => $token , 
-                 'user' => $user
+            return response()->json([
+                 'access-token' => $token ,
+                 'message' => 'Login successfully' , 
+                  'user' => $user ,
+                  'token-type' => 'Bearer'
             ] , 200);
         }
         else {
