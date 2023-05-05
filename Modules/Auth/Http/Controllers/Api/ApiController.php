@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use Modules\Auth\Http\Requests\LoginRequest;
 use Modules\Auth\Http\Requests\RegisterRequest;
 use Modules\Auth\Entities\User;
+use Illuminate\Support\Facades\Hash;
 
 class ApiController extends Controller
 {
@@ -23,10 +24,10 @@ class ApiController extends Controller
             $token = $user->createToken('Access Token')->accessToken;
 
             return response()->json([
-                 'access-token' => $token ,
+                 'access_token' => $token ,
                  'message' => 'Login successfully' , 
                   'user' => $user ,
-                  'token-type' => 'Bearer'
+                  'token_type' => 'Bearer'
             ] , 200);
         }
         else {
@@ -37,10 +38,29 @@ class ApiController extends Controller
         
     }
 
-    public function registerApi(RegisterRequest $request) {
-         User::create([
+    public function registerApi(REQUEST $request) {
+        $request->validate([
+         'username' => 'required|email|unique:users' , 
+         'password' => 'required|confirmed'
+        ]);
+
+        $user = User::create([
             'username' => $request->username, 
             'password' => Hash::make($request->password),
+            'is_admin' => '0'
          ]);
+
+         $token =  $user->createToken('Access Token')->accessToken;
+
+         return response()->json([
+            'message' => 'Register Successfully',
+            'access_token' => $token , 
+            'token_type' => 'Bearer'
+         ] , 200);
+
+    }
+
+    public function Auth() {
+       return Auth::user();
     }
 }

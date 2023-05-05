@@ -20,3 +20,6 @@ use Modules\Auth\Http\Controllers\Api\ApiController;
 // });
 
 Route::post('/Auth/login' , [ApiController::class , 'loginApi']);
+Route::post('Auth/register' , [ApiController::class , 'registerApi']);
+
+Route::get('/Auth/user' , [ApiController::class , 'Auth'])->middleware('auth:api');
