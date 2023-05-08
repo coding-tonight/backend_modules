@@ -61,6 +61,7 @@ class ApiController extends Controller
     }
 
     public function Auth() {
-       return Auth::user();
+       $user = User::where('id' ,Auth::user()->id)->with('Role')->get();
+       return $user;
     }
 }

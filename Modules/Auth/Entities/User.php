@@ -27,4 +27,7 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
    
+    public function Role() {
+        return $this->belongsToMany('Modules\Role\Entities\Role' , 'users_roles');
+    }
 }

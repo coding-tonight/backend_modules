@@ -12,10 +12,10 @@ class Role extends Model
     protected $fillable = [];
 
     public function User(){
-        return $this->belongsTo('App/Models/User' , 'id' , 'user_id');
+        return $this->belongsToMany('App/Models/User' , 'id' , 'user_id');
     }
 
-    public function permissions(){
-        return $this->hasMany('App/Models/Permission' ,)
-    }
+    // public function permissions(){
+    //     return $this->hasMany('App/Models/Permission' ,'')
+    // }
 }

@@ -1,5 +1,5 @@
 <?php
-
+use Modules\Role\Http\Controllers\Admin\RoleController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -11,6 +11,4 @@
 |
 */
 
-Route::prefix('role')->group(function() {
-    Route::get('/', 'RoleController@index');
-});
+Route::get('/allRole' , [RoleController::class , 'index'])->name('all.roles');

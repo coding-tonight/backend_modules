@@ -65,7 +65,7 @@
                         <div class="menu-title">Role and permission</div>
                     </a>
                     <ul>
-                        <li> <a href="{{ route('all.contact') }}"><i class="bx bx-right-arrow-alt"></i>All Role</a>
+                        <li> <a href="{{ route('all.roles') }}"><i class="bx bx-right-arrow-alt"></i>All Role</a>
                         </li>
                         <li> <a href="{{ route('create.carousel') }}"><i class="bx bx-right-arrow-alt"></i>Add Carousel</a>
                         </li>
