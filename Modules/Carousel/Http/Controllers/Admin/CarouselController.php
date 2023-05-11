@@ -40,7 +40,7 @@ class CarouselController extends Controller
        
       $image = $request->file('image');
       $image_name = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
-      Image::make($image)->resize(1080 , 500)->save('upload/carousel/'.$image_name);
+      Image::make($image)->save('upload/carousel/'.$image_name);
 
       if($request->file('image')){
         Carousel::insert([

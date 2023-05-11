@@ -25,4 +25,8 @@ class Products extends Model
     public function GetDetail() {
         return $this->hasOne('Modules\Product\Entities\ProductDetail' , 'product_id' , 'id');
     }
+
+    public function GetSocialMedia() {
+        return $this->hasOne('Modules\Product\Entities\SocialMedia' , 'product_id' , 'id');
+    }
 }

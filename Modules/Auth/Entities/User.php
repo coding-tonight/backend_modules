@@ -31,3 +31,4 @@ class User extends Authenticatable
         return $this->belongsToMany('Modules\Role\Entities\Role' , 'users_roles');
     }
 }
+ 

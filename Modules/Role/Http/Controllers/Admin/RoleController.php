@@ -6,7 +6,8 @@ use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Modules\Role\Entities\Role;
-use Modules\Auth\Entities\User;
+use Illuminate\Support\Facades\Gate;
+// use Modules\Auth\Entities\User;
 use Auth;
 
 class RoleController extends Controller
@@ -18,8 +19,11 @@ class RoleController extends Controller
     public function index()
     {
         $roles = Role::latest()->get();
-        $user = User::where('id' ,Auth::user()->id)->with('Role')->get();
-        dd($user);
-        return view('role::index' , compact('roles'));
+        // $user = User::where('id' ,Auth::user()->id)->with('Role')->get();
+        // dd($user);
+        if(Gate::allows('Manage_user')) {
+            return view('role::index' , compact('roles'));
+        }
+        abort(403);
     }
 }

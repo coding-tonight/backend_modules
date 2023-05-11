@@ -10,6 +10,8 @@ use Modules\Auth\Http\Requests\LoginRequest;
 use Modules\Auth\Http\Requests\RegisterRequest;
 use Modules\Auth\Entities\User;
 use Illuminate\Support\Facades\Hash;
+use Modules\Role\Entities\Role;
+// use  Modules\Role\Entities\UserRole;
 
 class ApiController extends Controller
 {
@@ -44,18 +46,23 @@ class ApiController extends Controller
          'password' => 'required|confirmed'
         ]);
 
+        $role = Role::where('role' ,  'User')->first();
+
         $user = User::create([
             'username' => $request->username, 
             'password' => Hash::make($request->password),
             'is_admin' => '0'
          ]);
+         
+        //  accessing User or buyer  role to registering user
+         $user->role()->attach($role->id);
 
          $token =  $user->createToken('Access Token')->accessToken;
 
          return response()->json([
             'message' => 'Register Successfully',
             'access_token' => $token , 
-            'token_type' => 'Bearer'
+            'token_type' => 'Bearer' 
          ] , 200);
 
     }

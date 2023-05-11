@@ -12,7 +12,7 @@ class Role extends Model
     protected $fillable = [];
 
     public function User(){
-        return $this->belongsToMany('App/Models/User' , 'id' , 'user_id');
+        return $this->belongsToMany('App/Models/User' ,'users_roles');
     }
 
     // public function permissions(){
