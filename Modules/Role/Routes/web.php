@@ -12,3 +12,4 @@ use Modules\Role\Http\Controllers\Admin\RoleController;
 */
 
 Route::get('/allRole' , [RoleController::class , 'index'])->name('all.roles');
+Route::get('/create' , [RoleController::class , 'create'])->name('create.role');

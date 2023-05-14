@@ -11,7 +11,7 @@ class ApiController extends Controller
 {
   public function ApiContact(REQUEST $request) {
    $request->validate([
-     'email' => 'required|email' , 
+     'email' => 'required' , 
      'subject'=> 'required',
      'message' => 'required|max:500'
    ]);

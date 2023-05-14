@@ -26,4 +26,9 @@ class RoleController extends Controller
         }
         abort(403);
     }
+
+    public function  create() 
+    { 
+      return view('role::create');
+    }
 }
