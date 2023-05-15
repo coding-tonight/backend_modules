@@ -30,5 +30,9 @@ class User extends Authenticatable
     public function Role() {
         return $this->belongsToMany('Modules\Role\Entities\Role' , 'users_roles');
     }
+
+    public function Order() { 
+        return $this->hasMany('Modules\ProductOrder\Entities\Order' , 'user_id' , 'id');
+    }
 }
  

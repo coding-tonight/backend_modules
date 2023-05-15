@@ -33,7 +33,7 @@ return new class extends Migration
             $table->enum('order_status' , ['pending' , 'done'])->default('pending');
             $table->string('address');
             $table->date('order_date');
-            $table->date('order_time');
+            $table->time('order_time');
             $table->string('role');
             $table->string('payment_verification')->nullable(); //pdf or image upload 
             $table->unsignedBigInteger('user_id'); 

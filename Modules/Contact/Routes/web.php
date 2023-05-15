@@ -13,4 +13,5 @@ use Modules\Contact\Http\Controllers\Admin\ContactController;
 
 Route::prefix('contact')->group(function (){
     Route::get('all' , [ContactController::class , 'index'])->name('all.contact');
+    Route::get('/delete/{id}' ,[ ContactController::class , 'delete'])->name('delete.contact');
 });

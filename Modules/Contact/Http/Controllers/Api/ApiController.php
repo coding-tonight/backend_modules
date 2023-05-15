@@ -5,13 +5,13 @@ namespace Modules\Contact\Http\Controllers\Api;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
-use Modules\Entities\Contact;
+use  Modules\Contact\Entities\Contact;
 
 class ApiController extends Controller
 {
   public function ApiContact(REQUEST $request) {
    $request->validate([
-     'email' => 'required' , 
+     'email' => 'required|email' , 
      'subject'=> 'required',
      'message' => 'required|max:500'
    ]);
@@ -22,6 +22,6 @@ class ApiController extends Controller
         'message' => $request->message,
     ]);
 
-     return $contacts;
+     return  response()->json(['success' => 'Message has been  successfully sent']);
   }
 }

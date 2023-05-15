@@ -9,10 +9,9 @@ class Order extends Model
 {
     use HasFactory;
 
-    protected $fillable = [];
+    protected $guarded = [];
     
-    protected static function newFactory()
-    {
-        return \Modules\ProductOrder\Database\factories\OrderFactory::new();
+    public function User() { 
+        return $this->belongsTo('Modules\Auth\Entities\User' , 'id' , 'user_id');
     }
 }
