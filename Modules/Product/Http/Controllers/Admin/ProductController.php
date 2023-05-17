@@ -190,19 +190,19 @@ class ProductController extends Controller
       //Product Images for Prduct pages
       $image_one = $request->file('image_one');
       $gen_name_one = hexdec(uniqid()).'.'.$image_one->getClientOriginalExtension();
-      Image::make($image_one)->resize(500 , 500)->save('upload/product/'.$gen_name_one);
+      Image::make($image_one)->resize(500 , 500)->save('upload/detail/'.$gen_name_one);
 
       $image_url_one = 'http://127.0.0.1/upload/product/'.$gen_name_one;
       //*******/
       $image_two = $request->file('image_two');
       $gen_name_two = hexdec(uniqid()).'.'.$image_two->getClientOriginalExtension();
-      Image::make($image_two)->resize(500 , 500)->save('upload/product/'.$gen_name_two);
+      Image::make($image_two)->resize(500 , 500)->save('upload/detail/'.$gen_name_two);
 
 
       //*******/
       $image_three = $request->file('image_three');
       $gen_name_three = hexdec(uniqid()).'.'.$image_three->getClientOriginalExtension();
-      Image::make($image_three)->resize(500 , 500)->save('upload/product/'.$gen_name_three);
+      Image::make($image_three)->resize(500 , 500)->save('upload/detail/'.$gen_name_three);
 
     
        if($request->file('image'))
@@ -273,7 +273,15 @@ class ProductController extends Controller
     }
 
   public function Delete($id) {
-     $product = Products::findorFail($id)->delete();
+     $product = Products::findorFail($id);
+    //  $productDetail =  ProductDetail::where('product_id' , $id)->get
+     if($product->image) {
+        unlink(public_path('upload/product/'.$product->image));
+        $product->delete();
+     } else {
+        $product->delete();
+     }
+
      return redirect()->back();
   }
 }

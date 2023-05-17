@@ -9,7 +9,15 @@ class Cart extends Model
 {
     use HasFactory;
 
-    protected $fillable = [];
+    protected $guarded = [];
     
+   
+    public function User() { 
+        return $this->belongsTo('Modules\Auth\Entities\User' , 'id' , 'user_id');
+    }
+
+    public function Products() { 
+        return $this->hasMany('Modules\Product\Entities\Product' , 'id' , 'product_id');
+    }
     
 }

@@ -20,22 +20,19 @@ return new class extends Migration
             $table->string('city');
             $table->string('contact_number');
             $table->string('full_name');
-            $table->string('product_code');
-            $table->string('product_name');
-            // $table->string('color');
-            $table->integer('product_id');
             $table->string('mode_of_payment'); 
             $table->string('total_amount');
+            $table->json('order_products');
             $table->string('province'); 
             $table->string('delivery_fee')->nullable(); 
-            $table->string('postal_code');
-            $table->string('order_qty');
+            $table->longText('postal_code');
             $table->enum('order_status' , ['pending' , 'done'])->default('pending');
             $table->string('address');
             $table->date('order_date');
             $table->time('order_time');
             $table->string('role');
             $table->string('payment_verification')->nullable(); //pdf or image upload 
+            // foreign key 
             $table->unsignedBigInteger('user_id'); 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();

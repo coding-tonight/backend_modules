@@ -29,4 +29,8 @@ class Products extends Model
     public function GetSocialMedia() {
         return $this->hasOne('Modules\Product\Entities\SocialMedia' , 'product_id' , 'id');
     }
+
+    public function Cart() { 
+        return $this->belongsTo('Modules\Cart\Entities\Cart' , 'product_id' , 'id');
+    }
 }

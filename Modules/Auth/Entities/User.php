@@ -34,5 +34,8 @@ class User extends Authenticatable
     public function Order() { 
         return $this->hasMany('Modules\ProductOrder\Entities\Order' , 'user_id' , 'id');
     }
+    public function Cart() { 
+        return $this->hasMany('Modules\Cart\Entities\Cart' , 'user_id' , 'id');
+    }
 }
  

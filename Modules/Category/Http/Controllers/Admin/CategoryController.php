@@ -7,7 +7,7 @@ use Modules\Category\Entities\Category;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Image;
-use Illuminate\Support\Facades\Storage;
+// use Illuminate\Support\Facades\Storage;
 
 class CategoryController extends Controller
 {
@@ -88,6 +88,10 @@ class CategoryController extends Controller
            [
              'Category_name.required' => 'Please Enter Category name'  ,
            ]);
+          
+          // deleting old image of categories
+          unlink(public_path('upload/category'.$category->image));
+
           $image = $request->file('image');
           $imageName = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
           Image::make($image)->save('upload/category/'.$imageName);
@@ -110,7 +114,15 @@ class CategoryController extends Controller
      }
 
      public function delete($id) {
-        $category = Category::findorFail($id)->delete();
+        $category = Category::findorFail($id);
+        
+        if($category->image) {
+          unlink(public_path('upload/category/'.$category->image));
+          $category->delete();
+        } else  {
+           $category->delete();
+        }
+    
         return redirect()->back();
      }
 }

@@ -15,11 +15,19 @@ return new class extends Migration
     {
         Schema::create('carts', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('product_id');
-            $table->foreign('product_id')->references('id')->on('products')->delete('cascade');
             $table->integer('product_code');
+            $table->string('product_name')->nullable();
+            $table->decimal('delivery_fee' ,3)->nullable();
             $table->string('order_qty');
             $table->string('total amount');
+
+            // foreign key 
+            $table->unsignedBigInteger('product_id');
+            $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
+            
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+
             $table->timestamps();
         });
     }

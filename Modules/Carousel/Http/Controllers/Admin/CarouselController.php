@@ -59,8 +59,15 @@ class CarouselController extends Controller
     }
 
     public function delete($id) {
-        $slide = Carousel::findorFail($id)->delete();
-        // Storage::delete($image_name);
+        $slide = Carousel::findorFail($id);
+        //deleting image file too 
+        if($slide->image) {
+          unlink(public_path('upload/carousel/'.$slide->image));
+          $slide->delete();
+        }  else {
+          $slide->delete();
+        }
+
         return redirect()->back();
     }
 }

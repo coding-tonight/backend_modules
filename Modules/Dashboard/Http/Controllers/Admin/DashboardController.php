@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Modules\Auth\Entities\Admin;
 use Modules\Contact\Entities\Contact;
+use Modules\Product\Entities\Products;
 
 class DashboardController extends Controller
 {
@@ -17,7 +18,8 @@ class DashboardController extends Controller
     public function index()
     {
         $message = Contact::count();
+        $product = Products::count();
 
-        return view('dashboard::index' , compact('message'));
+        return view('dashboard::index' , compact('message' , 'product'));
     }
 }
