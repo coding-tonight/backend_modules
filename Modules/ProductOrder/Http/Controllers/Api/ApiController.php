@@ -21,7 +21,7 @@ class ApiController extends Controller
         'province' => 'required', 
          // 'payment_verification' => 'mimes:jpeg,png,pdf'
        ]);
-       $products = [];
+      //  $products = [];
         
     // setting Aisa time as default
       date_default_timezone_set('Asia/Kathmandu');
@@ -38,9 +38,7 @@ class ApiController extends Controller
         'total_amount' => $request->total_amount , 
         'province' => $request->province , 
         'delivery_fee' => $request->delivery_fee,
-        'role' => $request->role, 
-        'user_id' => $request->user_id, 
-        'order_products' => $request->order_products, 
+        'order_products' => json_encode($request->order_products), 
         'city' => $request->city, 
       //   'product_id' => $request->product_id,
         'mode_of_payment' =>$request->mode_of_payment,

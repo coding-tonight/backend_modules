@@ -52,10 +52,46 @@ class CarouselController extends Controller
       return redirect()->route('all.carousel');
     }
 
-    public function Edit($id) {
+    public function edit($id) {
      $slide = Carousel::findorFail($id);
 
      return view('carousel::edit' , compact('slide'));
+    }
+   
+
+    public function update(REQUEST $request) {
+      $old_image = Carousel::findorFail($request->id);
+      
+      $request->validate([
+        'image' => 'required|image'
+        ], [
+          'image.required' => 'Please insert Image'
+        ]);
+         
+        $image = $request->file('image');
+        $image_name = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
+        Image::make($image)->save('upload/carousel/'.$image_name);
+  
+        if($request->file('image')){
+          // if old exist then delete old image 
+          unlink(public_path('upload/carousel'.$old_image));
+
+          Carousel::findorFail($request->id)->update([
+            'image' => $image_name,
+            'title' => $request->title,
+            'description' => $request->description,
+          ]);
+
+          return redirect()->route('all.carousel');
+        } 
+        else {
+          Carousel::findorFail($request->id)->update([
+            'image' => $image_name,
+            'title' => $request->title,
+            'description' => $request->description,
+          ]);
+          return redirect()->route('all.carousel');
+        }  
     }
 
     public function delete($id) {

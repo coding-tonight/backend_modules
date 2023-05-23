@@ -30,11 +30,10 @@ return new class extends Migration
             $table->string('address');
             $table->date('order_date');
             $table->time('order_time');
-            $table->string('role');
             $table->string('payment_verification')->nullable(); //pdf or image upload 
             // foreign key 
-            $table->unsignedBigInteger('user_id'); 
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            // $table->unsignedBigInteger('user_id'); 
+            // $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }

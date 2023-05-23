@@ -16,6 +16,7 @@ Route::prefix('carousel')->group(function () {
   Route::get('/all' , [CarouselController::class , 'index'])->name('all.carousel');
   Route::get('/create' , [CarouselController::class , 'create'])->name('create.carousel');
   Route::post('/add' , [CarouselController::class , 'add'])->name('add.carousel');
-  Route::post('edit/{id}' , [CarouselController::class , 'edit'])->name('edit.carousel');
+  Route::get('edit/{id}' , [CarouselController::class , 'edit'])->name('edit.carousel');
+  Route::patch('update' , [CarouselController::class , 'update'])->name('update.carousel');
   Route::get('/delete/{id}' , [CarouselController::class , 'delete'])->name('delete.carousel');
 });

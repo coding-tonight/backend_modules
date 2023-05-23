@@ -44,9 +44,9 @@
                                     <td> - </td>
                                     <td>
                                         <div class="d-flex order-actions"> <a
-                                                href=""
+                                                href="{{ route('edit.carousel' , $slides->id)}}"
                                                 class=""><i class="bx bxs-edit"></i></a>
-                                            <a href="{{ route('delete.carousel' , $slides->id , $slides->image) }}"
+                                            <a href="{{ route('delete.carousel' , $slides->id) }}"
                                                 id="delete" class="ms-4"><i class="bx bxs-trash"></i></a>
                                         </div>
                                     </td>
